@@ -1,5 +1,5 @@
 ﻿
-Shader "unityCookie/tut/beginner/1 - Flat Color"{
+Shader "shadersInUnity/beginner/Flat Color"{
 	Properties
 	{
 		_Color ("Color", Color) = (1.0,1.0,1.0,1.0)
