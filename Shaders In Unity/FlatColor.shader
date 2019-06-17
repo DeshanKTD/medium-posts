@@ -1,53 +1,52 @@
-﻿
-Shader "shadersInUnity/beginner/Flat Color"{
+﻿Shader "shadersInUnity/beginner/Flat Color"{
 	Properties
 	{
-		_Color ("Color", Color) = (1.0,1.0,1.0,1.0)
+		_Color("Color", Color) = (1.0,1.0,1.0,1.0)
 	}
 
 	SubShader
 	{
-			Pass {
-				CGPROGRAM
+		Pass {
+			CGPROGRAM
 
-				// pragmas
-				#pragma vertex vert
-				#pragma fragment frag
+			// pragmas
+			#pragma vertex vert
+			#pragma fragment frag
 
-				// user defined variables
-				uniform float4 _Color;
-				
+			// user defined variables
+			uniform float4 _Color;
 
-				// base structs
-				struct vertexInput 
-				{
-					float4 vertex: POSITION;
-				};
 
-				struct vertexOutput 
-				{
-					float4 pos: SV_POSITION;
-				};
+			// base structs
+			struct vertexInput
+			{
+				float4 vertex: POSITION;
+			};
 
-				// vertex function
-				vertexOutput vert(vertexInput v) 
-				{
-					vertexOutput o;
-					o.pos = UnityObjectToClipPos(v.vertex);
+			struct vertexOutput
+			{
+				float4 pos: SV_POSITION;
+			};
 
-					return o;
-				}
+			// vertex function
+			vertexOutput vert(vertexInput v)
+			{
+				vertexOutput o;
+				o.pos = UnityObjectToClipPos(v.vertex);
 
-				// fragment function
-				float4 frag(vertexOutput i) : COLOR
-				{
-					return _Color;
-				}
-
-				ENDCG
+				return o;
 			}
+
+			// fragment function
+			float4 frag(vertexOutput i) : COLOR
+			{
+				return _Color;
+			}
+
+			ENDCG
+		}
 	}
 
-		// fallback commentd out during development
-		// fallback "Diffuse"
+	// fallback commentd out during development
+	// fallback "Diffuse"
 }
